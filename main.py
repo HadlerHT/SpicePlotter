@@ -41,33 +41,42 @@ class App(ctk.CTk):
         self.columnconfigure(1, weight=2)
         self.columnconfigure(2, weight=2)
 
-        self.createMenuFrame()
+        menuFrame = self.createMenuFrame()
+        menuFrame.grid(sticky=ctk.NSEW, padx=0, pady=0, column=0, row=0)
 
-        functionFrame = ctk.CTkFrame(master=self, corner_radius=10)
-        functionFrame.grid(sticky=ctk.NSEW, padx=5, pady=5, column=1, row=0)
+        self.functionFrame = ctk.CTkFrame(master=self, corner_radius=10)
+        self.functionFrame.grid(sticky=ctk.NSEW, padx=5, pady=5, column=1, row=0)
 
         previewFrame = ctk.CTkFrame(master=self, corner_radius=10)
         previewFrame.grid(sticky=ctk.NSEW, padx=5, pady=5, column=2, row=0)
 
     def createMenuFrame(self):
         menuFrame = ctk.CTkFrame(master=self, corner_radius=0)
-        menuFrame.grid(sticky=ctk.NSEW, padx=0, pady=0, column=0, row=0)
 
         fileBrowserButton = ctk.CTkButton(master=menuFrame, text="Browse Files",
                                           command=fileBrowser, corner_radius=0)
         fileBrowserButton.pack(fill=X, ipady=10)
+
+        #menuCommand = {"Data": self.dataMenuHandler,
+        #               "Curve": self.curveMenuHandler,
+        #               "Axes": self.axesMenuHandler,
+        #               "Title": self.titleMenuHandler,
+        #               "Legend": self.legendMenuHandler}
 
         menuName = ("Data", "Curve", "Axes", "Title", "Legend")
         menuCommand = (self.dataMenuHandler, self.curveMenuHandler, self.axesMenuHandler,
                        self.titleMenuHandler, self.legendMenuHandler)
 
         menuButtons = list()
-        for i in range(5):
+        for i in range(len(menuName)):
             menuButtons.append(ctk.CTkButton(master=menuFrame, text=menuName[i],
                                              command=menuCommand[i], corner_radius=0))
             menuButtons[i].pack(fill=X)
 
+        return menuFrame
+
     def dataMenuHandler(self):
+        print(self.functionFrame.corner_radius)
         print(self.title)
 
     def curveMenuHandler(self):
