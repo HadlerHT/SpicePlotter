@@ -1,4 +1,3 @@
-'''
 import tkinter
 import tkinter.messagebox
 import customtkinter
@@ -190,20 +189,3 @@ class App(customtkinter.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
-'''
-
-menuCommand = {"Data": "a",
-               "Curve": "b",
-               "Axes": "c",
-               "Title": "d",
-               "Legend": "e"}
-#print(list(menuCommand.values())[0])
-
-print(menuCommand.values())
-
-menuCommand['goo'] = 14
-
-print(menuCommand.values())
-
-for i in menuCommand.keys():
-    print(i)
