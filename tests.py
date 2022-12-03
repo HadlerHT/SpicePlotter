@@ -197,3 +197,13 @@ menuCommand = {"Data": "a",
                "Axes": "c",
                "Title": "d",
                "Legend": "e"}
+#print(list(menuCommand.values())[0])
+
+print(menuCommand.values())
+
+menuCommand['goo'] = 14
+
+print(menuCommand.values())
+
+for i in menuCommand.keys():
+    print(i)
